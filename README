@@ -1,0 +1,42 @@
+RBArtMan -- RedBubble Art Manager Tool for Windows
+==================================================
+
+RBArtMan is a small utility for Windows that lets Windows users (who can't
+or won't install ruby) download and export lists of their RedBubble art,
+much like getrbart does. The tool is still in the early days of development
+but you're welcome to download it and have a play.
+
+The application requires that you have a reasonable Microsoft Windows
+machine and that it has the .NET framework v2 installed (don't worry if you
+don't know if you've got it, or not, the installer should let you know).
+
+I'm afraid that I don't have any comprehensive instructions on how to use
+the application right at this moment - I will address that issue at some
+point soon. To get you started try the following (assuming you've got the
+application installed and running):
+
+Select File >> New. Where you see User ID enter your RedBubble user ID (not
+your screen name, your user ID, the ID that appears in your RedBubble
+profile's URL). Select Art >> Download and watch and wait. A list of your
+art should download (it might take a while if you've got lots of art). Once
+that's done you've got a list of all your art on RedBubble. Save your
+document and then explore the Art menu.
+
+The most useful facility is probably Art >> Export >> HTML. This will
+generate a set of very basic HTML files that contain code that could be used
+in the pages of your own website (if you've got one). Think of this as a
+variation on the Sell your work on your own website code you'll find in the
+promote tab in your RedBubble profile. The code I produce is (currently)
+very basic but it should be enough to get you started (and it does have the
+advantage of including all your public art, not just the first 12 items).
+
+Visit http://www.davep.org/misc/RBArtMan/ to download a installer for the
+application.
+
+If you've got any questions please don't hesitate to drop me a line and I'll
+do my best to try and help out.
+
+This RedBubble hack is brought to you by Dave Pearson.
+
+Please note: This isn't associated with RedBubble. RedBubble don't endorse
+this, there's no connection. It's just a hack to make life a little easier.
