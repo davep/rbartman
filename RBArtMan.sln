@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RBArtMan", "RBArtMan\RBArtMan.csproj", "{D5E3B4AC-E5E3-4249-898D-8DF7A6B2658D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "RBArtManSetup", "RBArtManSetup\RBArtManSetup.vdproj", "{EB6D24E7-77E9-4A91-8CB5-E0ADD8EFD56E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D5E3B4AC-E5E3-4249-898D-8DF7A6B2658D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5E3B4AC-E5E3-4249-898D-8DF7A6B2658D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5E3B4AC-E5E3-4249-898D-8DF7A6B2658D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5E3B4AC-E5E3-4249-898D-8DF7A6B2658D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB6D24E7-77E9-4A91-8CB5-E0ADD8EFD56E}.Debug|Any CPU.ActiveCfg = Debug
+		{EB6D24E7-77E9-4A91-8CB5-E0ADD8EFD56E}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
