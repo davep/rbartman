@@ -97,7 +97,7 @@ namespace RBArtMan
         /// <returns>The URL for the work.</returns>
         protected string WorkURL()
         {
-            return RBUtils.WorkURL( sUser, sWorkID ).ToString();
+            return ( rbView.Checked ? RBUtils.WorkURL( sUser, sWorkID ) : RBUtils.WorkBuyURL( sUser, sWorkID ) ).ToString();
         }
 
         /// <summary>
@@ -345,7 +345,7 @@ namespace RBArtMan
         }
 
         /// <summary>
-        /// Refresht the promotion code when something changes.
+        /// Refresh the promotion code when something changes.
         /// </summary>
         /// <param name="sender">The object sending the event.</param>
         /// <param name="e">The event.</param>

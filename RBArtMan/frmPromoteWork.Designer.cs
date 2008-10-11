@@ -42,8 +42,12 @@ namespace RBArtMan
             this.rbSmall = new System.Windows.Forms.RadioButton();
             this.cbCropped = new System.Windows.Forms.CheckBox();
             this.tpCard = new System.Windows.Forms.TabPage();
-            this.rbBackBlack = new System.Windows.Forms.RadioButton();
+            this.gbImageBackgroundColour = new System.Windows.Forms.GroupBox();
+            this.btnPickCardBackColour = new System.Windows.Forms.Button();
+            this.pnlCardBackColourPreview = new System.Windows.Forms.Panel();
+            this.gbCardBackgroundColour = new System.Windows.Forms.GroupBox();
             this.rbBackWhite = new System.Windows.Forms.RadioButton();
+            this.rbBackBlack = new System.Windows.Forms.RadioButton();
             this.tpMatted = new System.Windows.Forms.TabPage();
             this.rbMatteBlack = new System.Windows.Forms.RadioButton();
             this.rbMatteBrightWhite = new System.Windows.Forms.RadioButton();
@@ -80,16 +84,17 @@ namespace RBArtMan
             this.btnClipboard = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
-            this.gbCardBackgroundColour = new System.Windows.Forms.GroupBox();
-            this.gbImageBackgroundColour = new System.Windows.Forms.GroupBox();
             this.cdImagebackground = new System.Windows.Forms.ColorDialog();
-            this.pnlCardBackColourPreview = new System.Windows.Forms.Panel();
-            this.btnPickCardBackColour = new System.Windows.Forms.Button();
+            this.gbTarget = new System.Windows.Forms.GroupBox();
+            this.rbView = new System.Windows.Forms.RadioButton();
+            this.rbBuy = new System.Windows.Forms.RadioButton();
             this.gbCodeStyle.SuspendLayout();
             this.gbImageStyle.SuspendLayout();
             this.tcTypes.SuspendLayout();
             this.tpImage.SuspendLayout();
             this.tpCard.SuspendLayout();
+            this.gbImageBackgroundColour.SuspendLayout();
+            this.gbCardBackgroundColour.SuspendLayout();
             this.tpMatted.SuspendLayout();
             this.tpLaminated.SuspendLayout();
             this.gbLaminatedSize.SuspendLayout();
@@ -100,8 +105,7 @@ namespace RBArtMan
             this.gbFramedSize.SuspendLayout();
             this.gbMatteColour.SuspendLayout();
             this.gbFrameColour.SuspendLayout();
-            this.gbCardBackgroundColour.SuspendLayout();
-            this.gbImageBackgroundColour.SuspendLayout();
+            this.gbTarget.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbCodeStyle
@@ -111,7 +115,7 @@ namespace RBArtMan
             this.gbCodeStyle.Controls.Add( this.rbTextile );
             this.gbCodeStyle.Location = new System.Drawing.Point( 12, 12 );
             this.gbCodeStyle.Name = "gbCodeStyle";
-            this.gbCodeStyle.Size = new System.Drawing.Size( 364, 52 );
+            this.gbCodeStyle.Size = new System.Drawing.Size( 225, 52 );
             this.gbCodeStyle.TabIndex = 0;
             this.gbCodeStyle.TabStop = false;
             this.gbCodeStyle.Text = "C&ode Style";
@@ -119,7 +123,7 @@ namespace RBArtMan
             // rbHTML
             // 
             this.rbHTML.AutoSize = true;
-            this.rbHTML.Location = new System.Drawing.Point( 239, 19 );
+            this.rbHTML.Location = new System.Drawing.Point( 161, 19 );
             this.rbHTML.Name = "rbHTML";
             this.rbHTML.Size = new System.Drawing.Size( 55, 17 );
             this.rbHTML.TabIndex = 2;
@@ -130,7 +134,7 @@ namespace RBArtMan
             // rbBBCode
             // 
             this.rbBBCode.AutoSize = true;
-            this.rbBBCode.Location = new System.Drawing.Point( 159, 19 );
+            this.rbBBCode.Location = new System.Drawing.Point( 91, 19 );
             this.rbBBCode.Name = "rbBBCode";
             this.rbBBCode.Size = new System.Drawing.Size( 64, 17 );
             this.rbBBCode.TabIndex = 1;
@@ -144,10 +148,10 @@ namespace RBArtMan
             this.rbTextile.Checked = true;
             this.rbTextile.Location = new System.Drawing.Point( 10, 19 );
             this.rbTextile.Name = "rbTextile";
-            this.rbTextile.Size = new System.Drawing.Size( 133, 17 );
+            this.rbTextile.Size = new System.Drawing.Size( 78, 17 );
             this.rbTextile.TabIndex = 0;
             this.rbTextile.TabStop = true;
-            this.rbTextile.Text = "Textile (for RedBubble)";
+            this.rbTextile.Text = "RedBubble";
             this.rbTextile.UseVisualStyleBackColor = true;
             this.rbTextile.Click += new System.EventHandler( this.codeStyleChanged );
             // 
@@ -158,7 +162,7 @@ namespace RBArtMan
             this.edtPromoteCode.Name = "edtPromoteCode";
             this.edtPromoteCode.ReadOnly = true;
             this.edtPromoteCode.Size = new System.Drawing.Size( 364, 85 );
-            this.edtPromoteCode.TabIndex = 2;
+            this.edtPromoteCode.TabIndex = 3;
             // 
             // gbImageStyle
             // 
@@ -166,7 +170,7 @@ namespace RBArtMan
             this.gbImageStyle.Location = new System.Drawing.Point( 12, 70 );
             this.gbImageStyle.Name = "gbImageStyle";
             this.gbImageStyle.Size = new System.Drawing.Size( 364, 151 );
-            this.gbImageStyle.TabIndex = 1;
+            this.gbImageStyle.TabIndex = 2;
             this.gbImageStyle.TabStop = false;
             this.gbImageStyle.Text = "&Image Style";
             // 
@@ -270,16 +274,46 @@ namespace RBArtMan
             this.tpCard.Text = "Card";
             this.tpCard.UseVisualStyleBackColor = true;
             // 
-            // rbBackBlack
+            // gbImageBackgroundColour
             // 
-            this.rbBackBlack.AutoSize = true;
-            this.rbBackBlack.Location = new System.Drawing.Point( 26, 51 );
-            this.rbBackBlack.Name = "rbBackBlack";
-            this.rbBackBlack.Size = new System.Drawing.Size( 113, 17 );
-            this.rbBackBlack.TabIndex = 1;
-            this.rbBackBlack.Text = "Black Background";
-            this.rbBackBlack.UseVisualStyleBackColor = true;
-            this.rbBackBlack.CheckedChanged += new System.EventHandler( this.codeStyleChanged );
+            this.gbImageBackgroundColour.Controls.Add( this.btnPickCardBackColour );
+            this.gbImageBackgroundColour.Controls.Add( this.pnlCardBackColourPreview );
+            this.gbImageBackgroundColour.Location = new System.Drawing.Point( 185, 6 );
+            this.gbImageBackgroundColour.Name = "gbImageBackgroundColour";
+            this.gbImageBackgroundColour.Size = new System.Drawing.Size( 153, 88 );
+            this.gbImageBackgroundColour.TabIndex = 3;
+            this.gbImageBackgroundColour.TabStop = false;
+            this.gbImageBackgroundColour.Text = "Image Background Colour";
+            this.gbImageBackgroundColour.Visible = false;
+            // 
+            // btnPickCardBackColour
+            // 
+            this.btnPickCardBackColour.Location = new System.Drawing.Point( 13, 37 );
+            this.btnPickCardBackColour.Name = "btnPickCardBackColour";
+            this.btnPickCardBackColour.Size = new System.Drawing.Size( 46, 23 );
+            this.btnPickCardBackColour.TabIndex = 1;
+            this.btnPickCardBackColour.Text = "Pick";
+            this.btnPickCardBackColour.UseVisualStyleBackColor = true;
+            this.btnPickCardBackColour.Click += new System.EventHandler( this.btnPickCardBackColour_Click );
+            // 
+            // pnlCardBackColourPreview
+            // 
+            this.pnlCardBackColourPreview.BackColor = System.Drawing.Color.White;
+            this.pnlCardBackColourPreview.Location = new System.Drawing.Point( 73, 20 );
+            this.pnlCardBackColourPreview.Name = "pnlCardBackColourPreview";
+            this.pnlCardBackColourPreview.Size = new System.Drawing.Size( 74, 62 );
+            this.pnlCardBackColourPreview.TabIndex = 0;
+            // 
+            // gbCardBackgroundColour
+            // 
+            this.gbCardBackgroundColour.Controls.Add( this.rbBackWhite );
+            this.gbCardBackgroundColour.Controls.Add( this.rbBackBlack );
+            this.gbCardBackgroundColour.Location = new System.Drawing.Point( 6, 6 );
+            this.gbCardBackgroundColour.Name = "gbCardBackgroundColour";
+            this.gbCardBackgroundColour.Size = new System.Drawing.Size( 173, 88 );
+            this.gbCardBackgroundColour.TabIndex = 2;
+            this.gbCardBackgroundColour.TabStop = false;
+            this.gbCardBackgroundColour.Text = "Card Background Colour";
             // 
             // rbBackWhite
             // 
@@ -293,6 +327,17 @@ namespace RBArtMan
             this.rbBackWhite.Text = "White Background";
             this.rbBackWhite.UseVisualStyleBackColor = true;
             this.rbBackWhite.CheckedChanged += new System.EventHandler( this.codeStyleChanged );
+            // 
+            // rbBackBlack
+            // 
+            this.rbBackBlack.AutoSize = true;
+            this.rbBackBlack.Location = new System.Drawing.Point( 26, 51 );
+            this.rbBackBlack.Name = "rbBackBlack";
+            this.rbBackBlack.Size = new System.Drawing.Size( 113, 17 );
+            this.rbBackBlack.TabIndex = 1;
+            this.rbBackBlack.Text = "Black Background";
+            this.rbBackBlack.UseVisualStyleBackColor = true;
+            this.rbBackBlack.CheckedChanged += new System.EventHandler( this.codeStyleChanged );
             // 
             // tpMatted
             // 
@@ -687,7 +732,7 @@ namespace RBArtMan
             this.btnClipboard.Location = new System.Drawing.Point( 12, 318 );
             this.btnClipboard.Name = "btnClipboard";
             this.btnClipboard.Size = new System.Drawing.Size( 123, 23 );
-            this.btnClipboard.TabIndex = 3;
+            this.btnClipboard.TabIndex = 4;
             this.btnClipboard.Text = "&Copy to Clipboard";
             this.btnClipboard.UseVisualStyleBackColor = true;
             this.btnClipboard.Click += new System.EventHandler( this.btnClipboard_Click );
@@ -698,7 +743,7 @@ namespace RBArtMan
             this.btnClose.Location = new System.Drawing.Point( 301, 318 );
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size( 75, 23 );
-            this.btnClose.TabIndex = 5;
+            this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler( this.btnClose_Click );
@@ -708,55 +753,49 @@ namespace RBArtMan
             this.btnPreview.Location = new System.Drawing.Point( 141, 318 );
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size( 75, 23 );
-            this.btnPreview.TabIndex = 4;
+            this.btnPreview.TabIndex = 5;
             this.btnPreview.Text = "&Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler( this.btnPreview_Click );
-            // 
-            // gbCardBackgroundColour
-            // 
-            this.gbCardBackgroundColour.Controls.Add( this.rbBackWhite );
-            this.gbCardBackgroundColour.Controls.Add( this.rbBackBlack );
-            this.gbCardBackgroundColour.Location = new System.Drawing.Point( 6, 6 );
-            this.gbCardBackgroundColour.Name = "gbCardBackgroundColour";
-            this.gbCardBackgroundColour.Size = new System.Drawing.Size( 173, 88 );
-            this.gbCardBackgroundColour.TabIndex = 2;
-            this.gbCardBackgroundColour.TabStop = false;
-            this.gbCardBackgroundColour.Text = "Card Background Colour";
-            // 
-            // gbImageBackgroundColour
-            // 
-            this.gbImageBackgroundColour.Controls.Add( this.btnPickCardBackColour );
-            this.gbImageBackgroundColour.Controls.Add( this.pnlCardBackColourPreview );
-            this.gbImageBackgroundColour.Location = new System.Drawing.Point( 185, 6 );
-            this.gbImageBackgroundColour.Name = "gbImageBackgroundColour";
-            this.gbImageBackgroundColour.Size = new System.Drawing.Size( 153, 88 );
-            this.gbImageBackgroundColour.TabIndex = 3;
-            this.gbImageBackgroundColour.TabStop = false;
-            this.gbImageBackgroundColour.Text = "Image Background Colour";
-            this.gbImageBackgroundColour.Visible = false;
             // 
             // cdImagebackground
             // 
             this.cdImagebackground.Color = System.Drawing.Color.White;
             // 
-            // pnlCardBackColourPreview
+            // gbTarget
             // 
-            this.pnlCardBackColourPreview.BackColor = System.Drawing.Color.White;
-            this.pnlCardBackColourPreview.Location = new System.Drawing.Point( 73, 20 );
-            this.pnlCardBackColourPreview.Name = "pnlCardBackColourPreview";
-            this.pnlCardBackColourPreview.Size = new System.Drawing.Size( 74, 62 );
-            this.pnlCardBackColourPreview.TabIndex = 0;
+            this.gbTarget.Controls.Add( this.rbBuy );
+            this.gbTarget.Controls.Add( this.rbView );
+            this.gbTarget.Location = new System.Drawing.Point( 243, 12 );
+            this.gbTarget.Name = "gbTarget";
+            this.gbTarget.Size = new System.Drawing.Size( 133, 52 );
+            this.gbTarget.TabIndex = 1;
+            this.gbTarget.TabStop = false;
+            this.gbTarget.Text = "&Link To";
             // 
-            // btnPickCardBackColour
+            // rbView
             // 
-            this.btnPickCardBackColour.Location = new System.Drawing.Point( 13, 37 );
-            this.btnPickCardBackColour.Name = "btnPickCardBackColour";
-            this.btnPickCardBackColour.Size = new System.Drawing.Size( 46, 23 );
-            this.btnPickCardBackColour.TabIndex = 1;
-            this.btnPickCardBackColour.Text = "Pick";
-            this.btnPickCardBackColour.UseVisualStyleBackColor = true;
-            this.btnPickCardBackColour.Click += new System.EventHandler( this.btnPickCardBackColour_Click );
+            this.rbView.AutoSize = true;
+            this.rbView.Checked = true;
+            this.rbView.Location = new System.Drawing.Point( 6, 19 );
+            this.rbView.Name = "rbView";
+            this.rbView.Size = new System.Drawing.Size( 48, 17 );
+            this.rbView.TabIndex = 0;
+            this.rbView.TabStop = true;
+            this.rbView.Text = "View";
+            this.rbView.UseVisualStyleBackColor = true;
+            this.rbView.Click += new System.EventHandler( this.codeStyleChanged );
+            // 
+            // rbBuy
+            // 
+            this.rbBuy.AutoSize = true;
+            this.rbBuy.Location = new System.Drawing.Point( 60, 19 );
+            this.rbBuy.Name = "rbBuy";
+            this.rbBuy.Size = new System.Drawing.Size( 43, 17 );
+            this.rbBuy.TabIndex = 1;
+            this.rbBuy.Text = "Buy";
+            this.rbBuy.UseVisualStyleBackColor = true;
+            this.rbBuy.Click += new System.EventHandler( this.codeStyleChanged );
             // 
             // frmPromoteWork
             // 
@@ -764,6 +803,7 @@ namespace RBArtMan
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size( 388, 347 );
+            this.Controls.Add( this.gbTarget );
             this.Controls.Add( this.btnPreview );
             this.Controls.Add( this.btnClose );
             this.Controls.Add( this.btnClipboard );
@@ -787,6 +827,9 @@ namespace RBArtMan
             this.tpImage.ResumeLayout( false );
             this.tpImage.PerformLayout();
             this.tpCard.ResumeLayout( false );
+            this.gbImageBackgroundColour.ResumeLayout( false );
+            this.gbCardBackgroundColour.ResumeLayout( false );
+            this.gbCardBackgroundColour.PerformLayout();
             this.tpMatted.ResumeLayout( false );
             this.tpMatted.PerformLayout();
             this.tpLaminated.ResumeLayout( false );
@@ -805,9 +848,8 @@ namespace RBArtMan
             this.gbMatteColour.PerformLayout();
             this.gbFrameColour.ResumeLayout( false );
             this.gbFrameColour.PerformLayout();
-            this.gbCardBackgroundColour.ResumeLayout( false );
-            this.gbCardBackgroundColour.PerformLayout();
-            this.gbImageBackgroundColour.ResumeLayout( false );
+            this.gbTarget.ResumeLayout( false );
+            this.gbTarget.PerformLayout();
             this.ResumeLayout( false );
             this.PerformLayout();
 
@@ -872,5 +914,8 @@ namespace RBArtMan
         private System.Windows.Forms.GroupBox gbCardBackgroundColour;
         private System.Windows.Forms.ColorDialog cdImagebackground;
         private System.Windows.Forms.Button btnPickCardBackColour;
+        private System.Windows.Forms.GroupBox gbTarget;
+        private System.Windows.Forms.RadioButton rbBuy;
+        private System.Windows.Forms.RadioButton rbView;
     }
 }

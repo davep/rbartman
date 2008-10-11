@@ -421,6 +421,17 @@ namespace RBArtMan
         }
 
         /// <summary>
+        /// Return the purchasing URL for a specific work.
+        /// </summary>
+        /// <param name="sUser">The user who owns the work.</param>
+        /// <param name="sWorkID">The ID of the work.</param>
+        /// <returns>The URL for purchasing the work.</returns>
+        public static Uri WorkBuyURL( string sUser, string sWorkID )
+        {
+            return new Uri( WorkURL( sUser, sWorkID ).ToString() + "/buy" );
+        }
+
+        /// <summary>
         /// Return the URL for the image of a work.
         /// </summary>
         /// <param name="sWorkID">The ID of the work.</param>
