@@ -154,6 +154,17 @@ namespace RBArtMan
         }
 
         /// <summary>
+        /// Read-only access to the filename.
+        /// </summary>
+        internal string Filename
+        {
+            get
+            {
+                return sFilename;
+            }
+        }
+
+        /// <summary>
         /// Returns the user ID for this window.
         /// </summary>
         internal string UserID

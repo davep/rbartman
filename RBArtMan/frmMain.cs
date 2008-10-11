@@ -192,8 +192,20 @@ namespace RBArtMan
         /// <param name="e">The event being sent.</param>
         private void mnuFileSaveAs_Click( object sender, EventArgs e )
         {
+            // Populate the dialog's filename.
+            if ( CurrentDocument.HasFileName )
+            {
+                sfdArt.FileName = CurrentDocument.Filename;
+            }
+            else
+            {
+                sfdArt.FileName = CurrentDocument.UserID;
+            }
+
+            // Get the save information from the user.
             if ( sfdArt.ShowDialog() == DialogResult.OK )
             {
+                // They've confirmed a save, do it.
                 CurrentDocument.SaveArt( sfdArt.FileName );
             }
         }
