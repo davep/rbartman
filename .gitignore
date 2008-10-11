@@ -1,4 +1,5 @@
 *~
+*.suo
 RBArtMan/obj/*
 RBArtMan/bin/*
 RBArtManSetup/Debug/*
