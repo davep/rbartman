@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Windows.Forms;
 
 namespace RBArtMan
 {
@@ -55,9 +56,10 @@ namespace RBArtMan
         /// Export to the given location.
         /// </summary>
         /// <param name="sLocation">The location we'll export to.</param>
+        /// <returns><c>true</c> if the export happened, <c>false</c> if not.</returns>
         /// <remarks>The location given could be a file or directory or even possibly
         /// something else. The context will depend on the child class in use.</remarks>
-        public abstract void ExportTo( string sLocation );
+        public abstract bool ExportTo( string sLocation );
     }
 
     /// <summary>
@@ -82,8 +84,12 @@ namespace RBArtMan
         /// Export the document as a file.
         /// </summary>
         /// <param name="sLocation">The name of the file to export to.</param>
-        public override void ExportTo( string sLocation )
+        /// <returns><c>true</c> if the export happened, <c>false</c> if not.</returns>
+        public override bool ExportTo( string sLocation )
         {
+            // Assume the worst.
+            bool bExported = false;
+
             // Create the file to export to.
             using ( FileStream h = new FileStream( sLocation, FileMode.Create, FileAccess.Write, FileShare.None ) )
             {
@@ -102,6 +108,7 @@ namespace RBArtMan
                         {
                             stream.Close();
                         }
+                        bExported = true;
                     }
                 }
                 finally
@@ -109,6 +116,8 @@ namespace RBArtMan
                     h.Close();
                 }
             }
+
+            return bExported;
         }
     }
 
@@ -176,15 +185,32 @@ namespace RBArtMan
         /// Export the document as HTML files.
         /// </summary>
         /// <param name="sLocation">The directory where the files will be located.</param>
-        public override void ExportTo( string sLocation )
+        /// <returns><c>true</c> if the export happened, <c>false</c> if not.</returns>
+        public override bool ExportTo( string sLocation )
         {
-            // Work out how many pages we'll have.
-            int iMaxPage = (int) Math.Ceiling( (double) ( doc.Items.Count / MAX_WORKS_PER_PAGE ) );
+            // Assume the worst.
+            bool bExported = false;
 
-            for ( int i = 0; i <= iMaxPage; i++ )
+            using( frmExportHTML oExport = new frmExportHTML() )
             {
-                ExportPage( i, sLocation );
+                if ( oExport.ShowDialog() == DialogResult.OK )
+                {
+                    // Work out how many pages we'll have.
+                    int iMaxPage = (int) Math.Ceiling( (double) ( doc.Items.Count / MAX_WORKS_PER_PAGE ) );
+
+                    // For each page....
+                    for ( int i = 0; i <= iMaxPage; i++ )
+                    {
+                        // ...emit the page.
+                        ExportPage( i, sLocation, oExport.Buy );
+                    }
+
+                    // Done.
+                    bExported = true;
+                }
             }
+
+            return bExported;
         }
 
         /// <summary>
@@ -192,7 +218,8 @@ namespace RBArtMan
         /// </summary>
         /// <param name="iPage">The page to export.</param>
         /// <param name="sLocation">The location where it will be exported to.</param>
-        protected void ExportPage( int iPage, string sLocation )
+        /// <param name="bBuy">Should we link to the purchase page for a work instead of the view page?</param>
+        protected void ExportPage( int iPage, string sLocation, bool bBuy )
         {
             using ( FileStream h = new FileStream( sLocation + "\\page" + iPage.ToString() + ".html", FileMode.Create, FileAccess.Write, FileShare.None ) )
             {
@@ -211,7 +238,7 @@ namespace RBArtMan
                                 RBArtItem item = doc.Items[ i ];
 
                                 html.WriteLine( String.Format( "<a class=\"rbam-thumbnail\" href=\"{0}\" title=\"{1}\"><img class=\"rbam-thumbnail\" src=\"{2}\" alt=\"{1}\" /></a>", 
-                                    RBUtils.WorkURL( doc.UserName, item.ID ),
+                                    bBuy ? RBUtils.WorkBuyURL( doc.UserName, item.ID ) : RBUtils.WorkURL( doc.UserName, item.ID ),
                                     item.Title, 
                                     RBUtils.WorkImageURL( item.ID, ArtCropping.Cropped, ArtSize.Small ) ) );
                             }
@@ -248,8 +275,12 @@ namespace RBArtMan
         /// Export the document as a MediaRSS file.
         /// </summary>
         /// <param name="sLocation">The name of the file to export to.</param>
-        public override void ExportTo( string sLocation )
+        /// <returns><c>true</c> if the export happened, <c>false</c> if not.</returns>
+        public override bool ExportTo( string sLocation )
         {
+            // Assume the worst.
+            bool bExported = false;
+
             // Create the file to export to.
             using ( FileStream h = new FileStream( sLocation, FileMode.Create, FileAccess.Write, FileShare.None ) )
             {
@@ -294,6 +325,9 @@ namespace RBArtMan
                             // End of the document.
                             stream.WriteLine( "  </channel> " );
                             stream.WriteLine( "</rss>" );
+
+                            // Done.
+                            bExported = true;
                         }
                         finally
                         {
@@ -306,6 +340,8 @@ namespace RBArtMan
                     h.Close();
                 }
             }
+
+            return bExported;
         }
     }
 }

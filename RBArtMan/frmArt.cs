@@ -655,8 +655,10 @@ namespace RBArtMan
             {
                 try
                 {
-                    ( new RBExportToHTML( WindowToDoc() ) ).ExportTo( fbHTML.SelectedPath );
-                    MessageBox.Show( "HTML files have been created in " + fbHTML.SelectedPath, "HTML Export Finished", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                    if ( ( new RBExportToHTML( WindowToDoc() ) ).ExportTo( fbHTML.SelectedPath ) )
+                    {
+                        MessageBox.Show( "HTML files have been created in " + fbHTML.SelectedPath, "HTML Export Finished", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                    }
                 }
                 catch ( Exception e )
                 {
