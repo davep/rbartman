@@ -676,7 +676,10 @@ namespace RBArtMan
             {
                 try
                 {
-                    ( new RBExportToMediaRSS( WindowToDoc() ) ).ExportTo( sdMediaRSS.FileName );
+                    if ( ( new RBExportToMediaRSS( WindowToDoc() ) ).ExportTo( sdMediaRSS.FileName ) )
+                    {
+                        MessageBox.Show( "The MediaRSS file has been created at " + sdMediaRSS.FileName, "MediaRSS Export Finished", MessageBoxButtons.OK, MessageBoxIcon.Information );
+                    }
                 }
                 catch ( Exception e )
                 {

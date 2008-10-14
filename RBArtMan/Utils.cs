@@ -26,6 +26,7 @@
 
 using System;
 using System.Windows.Forms;
+using System.Security;
 
 namespace RBArtMan
 {
@@ -58,6 +59,22 @@ namespace RBArtMan
         {
             // reset the cursor.
             Cursor.Current = OldCursor;
+        }
+    }
+
+    /// <summary>
+    /// General utility code.
+    /// </summary>
+    public static class Utils
+    {
+        /// <summary>
+        /// Encode a string so that it's safe for HTML.
+        /// </summary>
+        /// <param name="s">The string to encode.</param>
+        /// <returns>The encoded string</returns>
+        public static string HTMLEncode( string s )
+        {
+            return SecurityElement.Escape( s );
         }
     }
 }

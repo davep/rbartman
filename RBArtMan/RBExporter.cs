@@ -272,11 +272,12 @@ namespace RBArtMan
         public RBExportToMediaRSS( RBArtDocument doc ) : base( doc ) { }
 
         /// <summary>
-        /// Export the document as a MediaRSS file.
+        /// Perform the MediaRSS export.
         /// </summary>
         /// <param name="sLocation">The name of the file to export to.</param>
+        /// <param name="oOptions">Options for the export.</param>
         /// <returns><c>true</c> if the export happened, <c>false</c> if not.</returns>
-        public override bool ExportTo( string sLocation )
+        protected bool PerformExport( string sLocation, frmExportMediaRSS oOptions )
         {
             // Assume the worst.
             bool bExported = false;
@@ -294,26 +295,28 @@ namespace RBArtMan
                             stream.WriteLine( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" );
                             stream.WriteLine( "<rss version=\"2.0\" xmlns:media=\"http://search.yahoo.com/mrss/\" xmlns:atom=\"http://www.w3.org/2005/Atom\">" );
                             stream.WriteLine( "  <channel>" );
-                            stream.WriteLine( "    <title>Art on RedBubble</title>" ); // TODO: let user set
-                            stream.WriteLine( "    <description>Art on RedBubble</description>" );
-                            // <copyright>
+                            stream.WriteLine( "    <title>" + Utils.HTMLEncode( oOptions.Title ) + "</title>" );
+                            stream.WriteLine( "    <description>" + Utils.HTMLEncode( oOptions.Title ) + "</description>" );
+                            stream.WriteLine( "    <copyright>" + Utils.HTMLEncode( oOptions.Copyright ) + "</copyright>" );
                             stream.WriteLine( "    <link>" + RBUtils.RBProfileURL( doc.UserName ) + "</link>" );
                             // <pubDate>
                             // <lastBuildDate>
                             stream.WriteLine( "    <generator>http://www.davep.org/misc/RBArtMan/</generator>" );
-                            // <managingEditor>
+                            stream.WriteLine( "    <managingEditor>" + Utils.HTMLEncode( oOptions.Author ) + "</managingEditor>" );
                             stream.WriteLine( "    <category>Art</category>" );
                             // <atom:link>
 
                             // Now write each item in the channel.
                             foreach ( RBArtItem item in doc.Items )
                             {
+                                string sTargetURL = ( oOptions.Buy ? RBUtils.WorkBuyURL( doc.UserName, item.ID ) : RBUtils.WorkURL( doc.UserName, item.ID ) ).ToString();
+
                                 stream.WriteLine( "    <item>" );
-                                stream.WriteLine( "      <title>" + item.Title + "</title>" );
-                                stream.WriteLine( "      <link>" + RBUtils.WorkURL( doc.UserName, item.ID ) + "</link>" );
-                                stream.WriteLine( "      <guid isPermaLink=\"true\">" + RBUtils.WorkURL( doc.UserName, item.ID ) + "</guid>" );
+                                stream.WriteLine( "      <title>" + Utils.HTMLEncode( item.Title ) + "</title>" );
+                                stream.WriteLine( "      <link>" + sTargetURL + "</link>" );
+                                stream.WriteLine( "      <guid isPermaLink=\"true\">" + sTargetURL + "</guid>" );
                                 // <pubDate>
-                                // <author>
+                                stream.WriteLine( "      <author>" + Utils.HTMLEncode( oOptions.Author ) + "</author>" );
                                 stream.WriteLine( "      <media:thumbnail url=\"" + RBUtils.WorkImageURL( item.ID, ArtCropping.None, ArtSize.Small ) + "\" />" );
                                 stream.WriteLine( "      <media:content url=\"" + RBUtils.WorkImageURL( item.ID, ArtCropping.None, ArtSize.XLarge ) + "\" />" );
                                 // <media:credit>
@@ -338,6 +341,32 @@ namespace RBArtMan
                 finally
                 {
                     h.Close();
+                }
+            }
+
+            return bExported;
+        }
+
+        /// <summary>
+        /// Export the document as a MediaRSS file.
+        /// </summary>
+        /// <param name="sLocation">The name of the file to export to.</param>
+        /// <returns><c>true</c> if the export happened, <c>false</c> if not.</returns>
+        public override bool ExportTo( string sLocation )
+        {
+            // Assume the worst.
+            bool bExported = false;
+
+            using ( frmExportMediaRSS oExport = new frmExportMediaRSS() )
+            {
+                // Set any defaults.
+                oExport.Link = RBUtils.RBProfileURL( doc.UserName ).ToString();
+
+                // Get options from the user.
+                if ( oExport.ShowDialog() == DialogResult.OK )
+                {
+                    // They've confirmed the export, do it...
+                    bExported = PerformExport( sLocation, oExport );
                 }
             }
 
