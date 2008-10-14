@@ -193,7 +193,7 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:RBArtMan"
-        "ProductCode" = "8:{49913554-CC4B-4CCE-B469-5477FB0930CF}"
+        "ProductCode" = "8:{CB1019C1-29B8-4FF2-BF79-EF77835438D0}"
         "PackageCode" = "8:{92941485-F64E-430D-A445-0B0081112A56}"
         "UpgradeCode" = "8:{396D1DAC-D1E1-4FB9-BAFE-D83D577D9E84}"
         "RestartWWWService" = "11:FALSE"
