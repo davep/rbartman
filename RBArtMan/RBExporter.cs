@@ -303,7 +303,7 @@ namespace RBArtMan
                             stream.WriteLine( "    <copyright>" + Utils.HTMLEncode( oOptions.Copyright ) + "</copyright>" );
                             stream.WriteLine( "    <link>" + RBUtils.RBProfileURL( doc.UserName ) + "</link>" );
                             stream.WriteLine( "    <pubDate>" + sNow + "</pubDate>" );
-                            stream.WriteLine( "    <lastBuildDateDate>" + sNow + "</lastBuildDateDate>" );
+                            stream.WriteLine( "    <lastBuildDate>" + sNow + "</lastBuildDate>" );
                             stream.WriteLine( "    <generator>http://www.davep.org/misc/RBArtMan/</generator>" );
                             stream.WriteLine( "    <managingEditor>" + Utils.HTMLEncode( oOptions.Author ) + "</managingEditor>" );
                             stream.WriteLine( "    <category>Art</category>" );
