@@ -187,7 +187,7 @@ namespace RBArtMan
                 XmlNode id    = item.SelectSingleNode( "xhtml:span[@class='title']/xhtml:a", nsmgr );
                 XmlNode title = id; // Get title from same place as the ID.
 
-                art.Add( new RBArtItem( WorkIDFromURL( id.Attributes[ "href" ].Value ), id.Attributes[ "title" ].Value ) );
+                art.Add( new RBArtItem( WorkIDFromURL( id.Attributes[ "href" ].Value ), title.Attributes[ "title" ].Value ) );
             }
 
             return art;
