@@ -291,6 +291,9 @@ namespace RBArtMan
                     {
                         try
                         {
+                            // For when we need a time.
+                            string sNow = DateTime.Now.ToUniversalTime().ToString( "r" );
+
                             // First write the start of the document.
                             stream.WriteLine( "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" );
                             stream.WriteLine( "<rss version=\"2.0\" xmlns:media=\"http://search.yahoo.com/mrss/\" xmlns:atom=\"http://www.w3.org/2005/Atom\">" );
@@ -299,8 +302,8 @@ namespace RBArtMan
                             stream.WriteLine( "    <description>" + Utils.HTMLEncode( oOptions.Title ) + "</description>" );
                             stream.WriteLine( "    <copyright>" + Utils.HTMLEncode( oOptions.Copyright ) + "</copyright>" );
                             stream.WriteLine( "    <link>" + RBUtils.RBProfileURL( doc.UserName ) + "</link>" );
-                            // <pubDate>
-                            // <lastBuildDate>
+                            stream.WriteLine( "    <pubDate>" + sNow + "</pubDate>" );
+                            stream.WriteLine( "    <lastBuildDateDate>" + sNow + "</lastBuildDateDate>" );
                             stream.WriteLine( "    <generator>http://www.davep.org/misc/RBArtMan/</generator>" );
                             stream.WriteLine( "    <managingEditor>" + Utils.HTMLEncode( oOptions.Author ) + "</managingEditor>" );
                             stream.WriteLine( "    <category>Art</category>" );
@@ -315,7 +318,7 @@ namespace RBArtMan
                                 stream.WriteLine( "      <title>" + Utils.HTMLEncode( item.Title ) + "</title>" );
                                 stream.WriteLine( "      <link>" + sTargetURL + "</link>" );
                                 stream.WriteLine( "      <guid isPermaLink=\"true\">" + sTargetURL + "</guid>" );
-                                // <pubDate>
+                                stream.WriteLine( "      <pubDate>" + sNow + "</pubDate>" );
                                 stream.WriteLine( "      <author>" + Utils.HTMLEncode( oOptions.Author ) + "</author>" );
                                 stream.WriteLine( "      <media:thumbnail url=\"" + RBUtils.WorkImageURL( item.ID, ArtCropping.None, ArtSize.Small ) + "\" />" );
                                 stream.WriteLine( "      <media:content url=\"" + RBUtils.WorkImageURL( item.ID, ArtCropping.None, ArtSize.XLarge ) + "\" />" );
