@@ -66,20 +66,23 @@ namespace RBArtMan
         /// <param name="e">The event being sent.</param>
         private void newArtWindow( object sender, EventArgs e )
         {
-            // Create the new form.
-            frmArt wndArt = new frmArt();
+            using ( new BusyCursor() )
+            {
+                // Create the new form.
+                frmArt wndArt = new frmArt();
 
-            // Let it know that we're the parent.
-            wndArt.MdiParent = this;
+                // Let it know that we're the parent.
+                wndArt.MdiParent = this;
 
-            // Add some hooks.
-            wndArt.FormClosed                 += mdiRefresh;
-            wndArt.edtUserID.TextChanged      += mdiRefresh;
-            wndArt.lvArt.SelectedIndexChanged += mdiRefresh;
-            wndArt.BusyChange                 += mdiRefresh;
+                // Add some hooks.
+                wndArt.FormClosed += mdiRefresh;
+                wndArt.edtUserID.TextChanged += mdiRefresh;
+                wndArt.lvArt.SelectedIndexChanged += mdiRefresh;
+                wndArt.BusyChange += mdiRefresh;
 
-            // Show it.
-            wndArt.Show();
+                // Show it.
+                wndArt.Show();
+            }
         }
 
         /// <summary>

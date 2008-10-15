@@ -531,23 +531,26 @@ namespace RBArtMan
             // Get the content of this window as a RedBubble art document.
             RBArtDocument doc = WindowToDoc();
 
-            // Create the serializer.
-            XmlSerializer xml = new XmlSerializer( doc.GetType() );
-
-            // Create the file to save to.
-            using ( FileStream h = new FileStream( sFilename, FileMode.Create, FileAccess.Write, FileShare.None ) )
+            using ( new BusyCursor() )
             {
-                try
-                {
-                    // Write out the document.
-                    xml.Serialize( h, doc );
+                // Create the serializer.
+                XmlSerializer xml = new XmlSerializer( doc.GetType() );
 
-                    // We've saved. Become clean.
-                    bDirty = false;
-                }
-                finally
+                // Create the file to save to.
+                using ( FileStream h = new FileStream( sFilename, FileMode.Create, FileAccess.Write, FileShare.None ) )
                 {
-                    h.Close();
+                    try
+                    {
+                        // Write out the document.
+                        xml.Serialize( h, doc );
+
+                        // We've saved. Become clean.
+                        bDirty = false;
+                    }
+                    finally
+                    {
+                        h.Close();
+                    }
                 }
             }
 
@@ -573,7 +576,11 @@ namespace RBArtMan
             this.sFilename = sFilename;
 
             // Create the serializer.
-            XmlSerializer xml = new XmlSerializer( typeof( RBArtDocument ) );
+            XmlSerializer xml;
+            using ( new BusyCursor() )
+            {
+                xml = new XmlSerializer( typeof( RBArtDocument ) );
+            }
 
             // Open the file to load from.
             using ( FileStream h = new FileStream( sFilename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite ) )
