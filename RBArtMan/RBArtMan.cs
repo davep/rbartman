@@ -2,7 +2,6 @@
  * System.....: RBArtMan - Windows art manager for RedBubble.
  * Author.....: Dave Pearson <davep@davep.org>
  * Copyright..: Dave Pearson 2008
- * ID.........: $Id$
  * Description: Main application class.
  * Licence....: GNU General Public Licence (see below)
  *
