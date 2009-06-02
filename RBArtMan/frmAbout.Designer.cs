@@ -36,12 +36,12 @@ namespace RBArtMan
             this.lblRedBubble1 = new System.Windows.Forms.Label();
             this.lblRedBubble2 = new System.Windows.Forms.Label();
             this.gbTesters = new System.Windows.Forms.GroupBox();
+            this.lblReflexio = new System.Windows.Forms.LinkLabel();
+            this.lblshawhouse = new System.Windows.Forms.LinkLabel();
             this.lblShelleyHeath = new System.Windows.Forms.LinkLabel();
             this.lblJulieLangford = new System.Windows.Forms.LinkLabel();
             this.lblPigleT = new System.Windows.Forms.LinkLabel();
             this.lblBobbie = new System.Windows.Forms.LinkLabel();
-            this.lblshawhouse = new System.Windows.Forms.LinkLabel();
-            this.lblReflexio = new System.Windows.Forms.LinkLabel();
             this.gbTesters.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,9 +92,9 @@ namespace RBArtMan
             this.lblCopyright.AutoSize = true;
             this.lblCopyright.Location = new System.Drawing.Point( 9, 54 );
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size( 161, 13 );
+            this.lblCopyright.Size = new System.Drawing.Size( 188, 13 );
             this.lblCopyright.TabIndex = 4;
-            this.lblCopyright.Text = "Copyright © 2008 Dave Pearson";
+            this.lblCopyright.Text = "Copyright © 2008,2009 Dave Pearson";
             // 
             // lblRedBubble1
             // 
@@ -128,6 +128,30 @@ namespace RBArtMan
             this.gbTesters.TabIndex = 7;
             this.gbTesters.TabStop = false;
             this.gbTesters.Text = "Thanks to the testers:";
+            // 
+            // lblReflexio
+            // 
+            this.lblReflexio.AutoSize = true;
+            this.lblReflexio.Location = new System.Drawing.Point( 85, 29 );
+            this.lblReflexio.Name = "lblReflexio";
+            this.lblReflexio.Size = new System.Drawing.Size( 40, 13 );
+            this.lblReflexio.TabIndex = 5;
+            this.lblReflexio.TabStop = true;
+            this.lblReflexio.Tag = "http://www.redbubble.com/people/reflexio";
+            this.lblReflexio.Text = "reflexio";
+            this.lblReflexio.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler( this.VisitTester );
+            // 
+            // lblshawhouse
+            // 
+            this.lblshawhouse.AutoSize = true;
+            this.lblshawhouse.Location = new System.Drawing.Point( 85, 16 );
+            this.lblshawhouse.Name = "lblshawhouse";
+            this.lblshawhouse.Size = new System.Drawing.Size( 61, 13 );
+            this.lblshawhouse.TabIndex = 4;
+            this.lblshawhouse.TabStop = true;
+            this.lblshawhouse.Tag = "http://www.redbubble.com/people/shawhouse";
+            this.lblshawhouse.Text = "shawhouse";
+            this.lblshawhouse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler( this.VisitTester );
             // 
             // lblShelleyHeath
             // 
@@ -176,30 +200,6 @@ namespace RBArtMan
             this.lblBobbie.Tag = "http://www.redbubble.com/people/bobbie";
             this.lblBobbie.Text = "Bobbie";
             this.lblBobbie.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler( this.VisitTester );
-            // 
-            // lblshawhouse
-            // 
-            this.lblshawhouse.AutoSize = true;
-            this.lblshawhouse.Location = new System.Drawing.Point( 85, 16 );
-            this.lblshawhouse.Name = "lblshawhouse";
-            this.lblshawhouse.Size = new System.Drawing.Size( 61, 13 );
-            this.lblshawhouse.TabIndex = 4;
-            this.lblshawhouse.TabStop = true;
-            this.lblshawhouse.Tag = "http://www.redbubble.com/people/shawhouse";
-            this.lblshawhouse.Text = "shawhouse";
-            this.lblshawhouse.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler( this.VisitTester );
-            // 
-            // lblReflexio
-            // 
-            this.lblReflexio.AutoSize = true;
-            this.lblReflexio.Location = new System.Drawing.Point( 85, 29 );
-            this.lblReflexio.Name = "lblReflexio";
-            this.lblReflexio.Size = new System.Drawing.Size( 40, 13 );
-            this.lblReflexio.TabIndex = 5;
-            this.lblReflexio.TabStop = true;
-            this.lblReflexio.Tag = "http://www.redbubble.com/people/reflexio";
-            this.lblReflexio.Text = "reflexio";
-            this.lblReflexio.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler( this.VisitTester );
             // 
             // frmAbout
             // 
