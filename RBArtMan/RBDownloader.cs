@@ -135,7 +135,7 @@ namespace RBArtMan
                     XmlDocument page = GetArtPage( 1 );
 
                     // Find the list of pages.
-                    XmlNodeList pages = page.SelectNodes( "//xhtml:div[@id='pages']/xhtml:a", nsmgr );
+                    XmlNodeList pages = page.SelectNodes( "//xhtml:li[@class='page-link']/xhtml:a", nsmgr );
 
                     // Got a list?
                     if ( pages.Count > 0 )
