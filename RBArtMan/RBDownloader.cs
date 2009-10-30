@@ -107,7 +107,7 @@ namespace RBArtMan
         }
 
         /// <summary>
-        /// Work around a limit imposted by the W3C, and a Microsoft problem (I think).
+        /// Work around a limit imposed by the W3C, and a Microsoft problem (I think).
         /// </summary>
         /// <param name="sText">XML document as a string</param>
         /// <returns>A kludged up version of the document that won't bring down the wrath
@@ -118,7 +118,7 @@ namespace RBArtMan
         /// Problem was first reported to me on 2009-10-30, and was reported as
         /// having being a problem for a week or so. The user in question is,
         /// as far as I can tell, a regular user, so it appears this problem
-        /// cropped up pretty recent (despite the above blog entry being in early
+        /// cropped up pretty recently (despite the above blog entry being in early
         /// 2008 and despite me seeing mention of this as early as 2007).
         ///
         /// This probably needs a longer term fix.</remarks>
