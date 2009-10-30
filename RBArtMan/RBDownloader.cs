@@ -107,6 +107,27 @@ namespace RBArtMan
         }
 
         /// <summary>
+        /// Work around a limit imposted by the W3C, and a Microsoft problem (I think).
+        /// </summary>
+        /// <param name="sText">XML document as a string</param>
+        /// <returns>A kludged up version of the document that won't bring down the wrath
+        /// of the W3C</returns>
+        /// <remarks>Very nasty kludge to combat this:
+        /// http://www.w3.org/blog/systeam/2008/02/08/w3c_s_excessive_dtd_traffic
+        ///
+        /// Problem was first reported to me on 2009-10-30, and was reported as
+        /// having being a problem for a week or so. The user in question is,
+        /// as far as I can tell, a regular user, so it appears this problem
+        /// cropped up pretty recent (despite the above blog entry being in early
+        /// 2008 and despite me seeing mention of this as early as 2007).
+        ///
+        /// This probably needs a longer term fix.</remarks>
+        protected string KludgeTheFactThatTheW3CHateMe( string sText )
+        {
+            return sText.Replace( "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">", "" ).Replace( "&laquo;", "" ).Replace( "&raquo", "" );
+        }
+
+        /// <summary>
         /// Download an art page.
         /// </summary>
         /// <param name="iPage">The page to download.</param>
@@ -117,7 +138,7 @@ namespace RBArtMan
 
             XmlDocument doc = new XmlDocument();
 
-            doc.LoadXml( sText );
+            doc.LoadXml( KludgeTheFactThatTheW3CHateMe( sText ) );
 
             return doc;
         }
