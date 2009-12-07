@@ -124,7 +124,7 @@ namespace RBArtMan
         /// This probably needs a longer term fix.</remarks>
         protected string KludgeTheFactThatTheW3CHateMe( string sText )
         {
-            return sText.Replace( "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">", "" ).Replace( "&laquo;", "" ).Replace( "&raquo", "" );
+            return sText.Replace( "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">", "" ).Replace( "&laquo;", "" ).Replace( "&raquo", "" ).Replace( "&hellip", "" );
         }
 
         /// <summary>
